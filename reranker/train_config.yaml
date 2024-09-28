@@ -1,0 +1,17 @@
+project_name: 'qa_relevancy_pretrain'
+model_name: 'FacebookAI/xlm-roberta-large'
+max_len: 256
+n_folds: 3
+lr: 0.00001
+track: 'val_loss'
+scheduler: 'cosine'
+optimizer: 'adamw'
+num_classes: 3
+type_of_train: 'sft'
+data_path: 'data/generated_ranked_3_v3_questions'
+epochs: 5
+batch_size: 128
+precision: 'bf16'
+val_check_interval: 1.0
+# dataset_size: 3000000
+checkpoint_path: 'checkpoints/FacebookAI/xlm-roberta-large_fold_0/checkpoint_epoch=1-val_loss=0.09-val_f1=0.97-val_ndcg=1.00.ckpt'

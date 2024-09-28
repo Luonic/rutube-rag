@@ -1,0 +1,9 @@
+model_name: 'FacebookAI/xlm-roberta-large'
+max_len: 256
+n_folds: 3
+num_classes: 3
+batch_size: 128
+checkpoint_paths:
+    - 'checkpoints/FacebookAI/xlm-roberta-large_fold_0/checkpoint_epoch=4-val_loss=0.55-val_f1=0.73-val_ndcg=0.97.ckpt'
+    - 'checkpoints/FacebookAI/xlm-roberta-large_fold_1/checkpoint_epoch=0-val_loss=0.62-val_f1=0.65-val_ndcg=0.95.ckpt'
+    - 'checkpoints/FacebookAI/xlm-roberta-large_fold_2/checkpoint_epoch=0-val_loss=0.62-val_f1=0.62-val_ndcg=0.95.ckpt'
