@@ -1,0 +1,43 @@
+{
+    "source": "Если браузер устарел, обновить его можно на сайте компании-разработчика. Список сайтов приведен ниже: Google Chrome: https://www.google.com/chrome/ Firefox: https://www.mozilla.org/ru/firefox/new/ Microsoft Edge: https://support.microsoft.com/ru-ru/windows Safari: https://support.apple.com/ru-ru/safari Opera: https://www.opera.com/ru Яндекс: https://browser.yandex.ru/",
+    "row": 815,
+    "question": "Что делать, если мой браузер устарел?",
+    "answer": "Если браузер устарел, обновить его можно на сайте компании-разработчика. Список сайтов приведен ниже: Google Chrome: https://www.google.com/chrome/ Firefox: https://www.mozilla.org/ru/firefox/new/ Microsoft Edge: https://support.microsoft.com/ru-ru/windows Safari: https://support.apple.com/ru-ru/safari Opera: https://www.opera.com/ru Яндекс: https://browser.yandex.ru/",
+    "classifier_1": "ОТСУТСТВУЕТ",
+    "classifier_2": "Отсутствует",
+    "questions": {
+        "user_queries": [
+            {
+                "query": "Как обновить старый браузер?"
+            },
+            {
+                "query": "Что делать, если у меня не обновляется браузер?"
+            },
+            {
+                "query": "Подскажите, как мне обновить Google Chrome, если он устарел?"
+            },
+            {
+                "query": "Мой браузер давно не обновлялся. Как это исправить?"
+            },
+            {
+                "query": "Куда идти, чтобы скачать обновление для Firefox?"
+            },
+            {
+                "query": "Не могу найти, где обновить Edge. Помогите!"
+            },
+            {
+                "query": "Как обновить Safari на моем Mac?"
+            },
+            {
+                "query": "Где можно скачать последнюю версию Opera?"
+            },
+            {
+                "query": "Какие есть варианты обновления Яндекс.Браузера?"
+            },
+            {
+                "query": "Мой браузер устарел, где его можно обновить?"
+            }
+        ]
+    },
+    "split_answer": "Если браузер устарел, обновить его можно на сайте компании-разработчика. Список сайтов приведен ниже: Google Chrome: https://www.google.com/chrome/ Firefox: https://www.mozilla.org/ru/firefox/new/ Microsoft Edge: https://support.microsoft.com/ru-ru/windows Safari: https://support.apple.com/ru-ru/safari Opera: https://www.opera.com/ru Яндекс: https://browser.yandex.ru/"
+}

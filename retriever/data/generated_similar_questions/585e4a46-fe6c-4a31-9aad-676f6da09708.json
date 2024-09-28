@@ -1,0 +1,43 @@
+{
+    "source": "Рекомендуем обновить её до последней версии на сайте разработчика. Список сайтов приведен ниже: Google Chrome: https://www.google.com/chrome/ Firefox: https://www.mozilla.org/ru/firefox/new/ Microsoft Edge: https://support.microsoft.com/ru-ru/windows Safari: https://support.apple.com/ru-ru/safari",
+    "row": 1059,
+    "question": "у меня старая версия браузера, что делать?",
+    "answer": "Рекомендуем обновить её до последней версии на сайте разработчика. Список сайтов приведен ниже: Google Chrome: https://www.google.com/chrome/ Firefox: https://www.mozilla.org/ru/firefox/new/ Microsoft Edge: https://support.microsoft.com/ru-ru/windows Safari: https://support.apple.com/ru-ru/safari",
+    "classifier_1": "ОТСУТСТВУЕТ",
+    "classifier_2": "Отсутствует",
+    "questions": {
+        "user_queries": [
+            {
+                "query": "Как обновить мой браузер до последней версии? У меня старая версия."
+            },
+            {
+                "query": "У меня устарелый браузер, что делать?"
+            },
+            {
+                "query": "Привет, подскажите, как обновить Google Chrome до последней версии?"
+            },
+            {
+                "query": "Не могу найти, где обновить Firefox. Помогите!"
+            },
+            {
+                "query": "Как обновить Safari на моем MacBook?"
+            },
+            {
+                "query": "Пожалуйста, подскажите, где можно обновить Microsoft Edge?"
+            },
+            {
+                "query": "Мой браузер не обновляется автоматически. Как обновить вручную?"
+            },
+            {
+                "query": "Как обновить браузер до последней верссии? Кто знает?"
+            },
+            {
+                "query": "Мне нужно обновить браузер. Где скачать последнюю версию?"
+            },
+            {
+                "query": "Не подскажите, где можно скачать обновление для браузера?"
+            }
+        ]
+    },
+    "split_answer": "Рекомендуем обновить её до последней версии на сайте разработчика. Список сайтов приведен ниже: Google Chrome: https://www.google.com/chrome/ Firefox: https://www.mozilla.org/ru/firefox/new/ Microsoft Edge: https://support.microsoft.com/ru-ru/windows Safari: https://support.apple.com/ru-ru/safari"
+}
