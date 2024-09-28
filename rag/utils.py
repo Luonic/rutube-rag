@@ -1,5 +1,4 @@
 import os
-import nltk
 import string
 from pathlib import Path
 from razdel import tokenize
@@ -57,7 +56,7 @@ def count_tokens(text):
 
 def format_docs_with_score(docs):
     print(len(docs))
-    concateneted_docs_string = "\n\n".join('\n'.join([f'Id источника: {i}', doc.metadata['question'], doc.page_content]) for i, (doc, score) in enumerate(docs))
+    concateneted_docs_string = "\n\n".join('\n'.join([f'Id источника: {i}\nScore: {score:.4f}', doc.metadata['question'], doc.page_content]) for i, (doc, score) in enumerate(docs))
     print(concateneted_docs_string)
     print()
     return concateneted_docs_string

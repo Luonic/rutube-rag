@@ -17,24 +17,16 @@ from langchain_community.retrievers import BM25Retriever
 from langchain_core.pydantic_v1 import BaseModel, Field
 from langchain.load import dumps, loads
 
-from utils import *
-
+from rag.utils import *
+from rag.prompts import *
 
 prompt = ChatPromptTemplate.from_messages([
     SystemMessage("Вы помощник для выполнения ответов на вопросы пользователей видеохостинга Rutube."), 
-    ("user", """Используйте следующие части полученного контекста для ответа на поставленный вопрос. 
-     Ответ должен быть максимально точным, правильным и релевантным вопросу и контексту. 
-     Не совершайте фактологических и логических ошибок относительно контекста и вопроса.
-     Если в контексте нет ответа на поставленный вопрос, скажите, что не знаете, либо ведите диалог с пользователем в режиме болталки, если он задает общие вопросы.
-     Вопрос: {question}
-     Контекст: {context}""")
+    ("user", RAG_PROMPT)
     ])
 
 multiquery_prompt = ChatPromptTemplate.from_messages([
-    SystemMessage("""Вы помощник языковой модели искусственного интеллекта для ответов на вопросы пользователей видеохостинга Rutube. 
-                  Ваша задача — сгенерировать пять разных, но близких по смыслу версий заданного вопроса для извлечения соответствующих документов из векторной базы данных. 
-                  Можно использовать парафразы или синонимы к понятиям из вопроса, но с высокой степенью релевантности к первоначальному вопросу. 
-                  Укажите исходный вопрос и 5 альтернативных вопросов в JSON следующего формата: {"queries": ["Исходный вопрос", "Альтернативный вопрос 1", ..., "Альтернативный вопрос 5"]}."""), 
+    SystemMessage(MULTIQUERY_PROMPT), 
     ("user", "Исходный вопрос: {question}")
 ])
 
@@ -42,7 +34,7 @@ class StructuredOutput(BaseModel):
     """Ответьте на вопрос пользователя, основываясь только на указанных источниках, и укажите использованные источники.
     Источники должны быть полностью релевантны к вопросу, если источник нерелевантен вопросу, то его использовать для генерации ответа нельзя!
     Если ответа на вопрос в контексте нет, то идентификаторы источников указывать также не нужно."""
-    answer: List[str] = Field(description = """Ответ на вопрос пользователя, основанный только на релевантных источниках.""")
+    answer: str = Field(description = """Ответ на вопрос пользователя, основанный только на релевантных источниках.""")
     citations: List[int] = Field(description="""Список целочисленных идентификаторов источников, которые обосновывают ответ.""")
     
 
@@ -84,7 +76,7 @@ def init_retriever(data_path: str, embedding_models: list, config: dict):
     return ensemble_retriever
 
     
-def reciprocal_rank_fusion(results: list[list], k=60):
+def reciprocal_rank_fusion(results: list[list], k=60, top_k=5):
     
     fused_scores = {}
 
@@ -99,11 +91,13 @@ def reciprocal_rank_fusion(results: list[list], k=60):
         (loads(doc), score)
         for doc, score in sorted(fused_scores.items(), key=lambda x: x[1], reverse=True)
     ]
-
+    reranked_results = reranked_results[:top_k]
     return reranked_results
-    
 
-def init_multiquery_rag_chain(prompt, multiquery_prompt, retriever, llm):
+
+def init_multiquery_rag_chain(prompt, multiquery_prompt, retriever, reranker, llm):
+    def rerank_results(questions, answer, top_k=2):
+        return reranker.rerank_questions(questions, answer, top_k)
     
     generate_queries = (
         multiquery_prompt 
@@ -122,8 +116,12 @@ def init_multiquery_rag_chain(prompt, multiquery_prompt, retriever, llm):
         | structured_llm
     )
 
-    retrieve_docs = (lambda x: x["question"]) | retrieval_chain
-
+    def retrieve_docs(input):
+        question = (lambda x: x["question"])(input)
+        docs = retrieval_chain.invoke(input)
+        reranked_docs = rerank_results(docs, question)
+        return reranked_docs
+        
     chain = RunnablePassthrough.assign(context=retrieve_docs).assign(
         answer=final_rag_chain
     )
@@ -131,19 +129,21 @@ def init_multiquery_rag_chain(prompt, multiquery_prompt, retriever, llm):
     return chain
     
  
-def invoke_multiquery_rag_chain(rag_chain, question, return_context=False):
+def invoke_multiquery_rag_chain(rag_chain, question, standard=False):
     answer_data = rag_chain.invoke({'question': question})
     text_answer = answer_data['answer'].answer
     citations_id = answer_data['answer'].citations
-    classifier_1_lst = []
-    classifier_2_lst = []
-    for i, (context_doc, score) in enumerate(answer_data['context']):
-        if i in citations_id:
-            classifier_1_lst.append(context_doc.metadata['classifier_1'])
-            classifier_2_lst.append(context_doc.metadata['classifier_2'])
 
-    if not return_context:
-        return {'text': text_answer, 'classifier_1': classifier_1_lst, 'classifier_2': classifier_2_lst}
+    if len(citations_id):
+        classifier_1 = answer_data['context'][0][0].metadata['classifier_1']
+        classifier_2 = answer_data['context'][1][0].metadata['classifier_2']
+    else:
+        classifier_1 = ''
+        classifier_2 = ''
+
+    if standard:
+        return {'answer': text_answer, 'classifier_1': classifier_1, 'classifier_2': classifier_2}
     else: 
-        context = list([' '.join([context_doc.metadata['question'], context_doc.page_content]) for i, (context_doc, score) in enumerate(answer_data['context']) if i in citations_id])
-        return {'text': text_answer, 'classifier_1': classifier_1_lst[0], 'classifier_2': classifier_2_lst[0], 'contexts': context}
+        context = list([' '.join([context_doc.page_content]) \
+                        for i, (context_doc, score) in enumerate(answer_data['context']) if i in citations_id])
+        return {'answer': text_answer, 'classifier_1': classifier_1, 'classifier_2': classifier_2, 'contexts': context}

@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  rutube_rag:
+    build: .
+    ports:
+      - "31000:31000"
+    network_mode: host
+    environment:
+      PROXY: ${PROXY}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+    # volumes:
+    #   - ../qa/finetuned-e5-base-folds_v3:/app/rag/finetuned-e5-base-folds_v3
+    #   - ../qa/e5-base-tokenizer:/app/rag/e5-base-tokenizer
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
