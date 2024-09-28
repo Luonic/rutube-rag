@@ -1,0 +1,43 @@
+{
+    "source": "Скачать приложение Студия RUTUBE можно в: 1. Google Play: https://play.google.com/store/apps/details?id=ru.rutube.studio 2. AppGallery: https://appgallery.huawei.com/#/app/C111062405 3. RuStore: https://www.rustore.ru/catalog/app/ru.rutube.studio",
+    "row": 68,
+    "question": "Где можно скачать приложение Студия RUTUBE?",
+    "answer": "Скачать приложение Студия RUTUBE можно в: 1. Google Play: https://play.google.com/store/apps/details?id=ru.rutube.studio 2. AppGallery: https://appgallery.huawei.com/#/app/C111062405 3. RuStore: https://www.rustore.ru/catalog/app/ru.rutube.studio",
+    "classifier_1": "ДОСТУП К RUTUBE",
+    "classifier_2": "Приложение",
+    "questions": {
+        "user_queries": [
+            {
+                "query": "Подскажите, где я могу найти приложение Студия RUTUBE для скачивания?"
+            },
+            {
+                "query": "Где скачать приложение Студия RUTUBE для Android?"
+            },
+            {
+                "query": "Скиньте ссылку на скачивание Студии RUTUBE, пожалуйста"
+            },
+            {
+                "query": "Здравствуйте! Подскажите, где можно загрузить приложение Студия RUTUBE?"
+            },
+            {
+                "query": "В каком магазине приложений можно найти Студию RUTUBE?"
+            },
+            {
+                "query": "Где можно скачать RUTUBE Studio?"
+            },
+            {
+                "query": "Как можно установить приложение Студия RUTUBE на телефон?"
+            },
+            {
+                "query": "Где скачать приложение RUTUBE студия?"
+            },
+            {
+                "query": "Скажите, пожалуйста, где доступно для загрузки приложение Студия RUTUBE?"
+            },
+            {
+                "query": "Можно узнать, где скачать приложение Студия RUTUBE?"
+            }
+        ]
+    },
+    "split_answer": "Скачать приложение Студия RUTUBE можно в: 1. Google Play: https://play.google.com/store/apps/details?id=ru.rutube.studio 2. AppGallery: https://appgallery.huawei.com/#/app/C111062405 3. RuStore: https://www.rustore.ru/catalog/app/ru.rutube.studio"
+}

@@ -1,0 +1,43 @@
+{
+    "source": "Для этого нужно перейти на сайт разработчика и скачать актуальную версию. Список сайтов приведен ниже: Google Chrome: https://www.google.com/chrome/ Firefox: https://www.mozilla.org/ru/firefox/new/ Microsoft Edge: https://support.microsoft.com/ru-ru/windows Safari: https://support.apple.com/ru-ru/safari",
+    "row": 283,
+    "question": "Как обновить браузер?",
+    "answer": "Для этого нужно перейти на сайт разработчика и скачать актуальную версию. Список сайтов приведен ниже: Google Chrome: https://www.google.com/chrome/ Firefox: https://www.mozilla.org/ru/firefox/new/ Microsoft Edge: https://support.microsoft.com/ru-ru/windows Safari: https://support.apple.com/ru-ru/safari",
+    "classifier_1": "ОТСУТСТВУЕТ",
+    "classifier_2": "Отсутствует",
+    "questions": {
+        "user_queries": [
+            {
+                "query": "Привет! Подскажи, как мне обновить браузер Хром?"
+            },
+            {
+                "query": "Какие шаги предпринять для обновления Firefox?"
+            },
+            {
+                "query": "Как можно скачать последнюю версию Edge?"
+            },
+            {
+                "query": "Добрый день, как обновить Safari на моем Маке?"
+            },
+            {
+                "query": "Объясните, пожалуйста, как обновить мой интернет браузер?"
+            },
+            {
+                "query": "Как обновить браузер на моем компьютере?"
+            },
+            {
+                "query": "Как скачать новую версию браузера?"
+            },
+            {
+                "query": "не могу понять как обновить браузер, помогите!"
+            },
+            {
+                "query": "Как обновить свой браузер до последней версии?"
+            },
+            {
+                "query": "Че делать, чтоб браузер был свежий?"
+            }
+        ]
+    },
+    "split_answer": "Для этого нужно перейти на сайт разработчика и скачать актуальную версию. Список сайтов приведен ниже: Google Chrome: https://www.google.com/chrome/ Firefox: https://www.mozilla.org/ru/firefox/new/ Microsoft Edge: https://support.microsoft.com/ru-ru/windows Safari: https://support.apple.com/ru-ru/safari"
+}

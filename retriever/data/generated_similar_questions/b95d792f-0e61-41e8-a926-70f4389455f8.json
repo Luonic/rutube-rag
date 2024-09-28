@@ -1,0 +1,43 @@
+{
+    "source": "Скачать приложение Студия RUTUBE можно в: 1. Google Play: https://play.google.com/store/apps/details?id=ru.rutube.studio 2. AppGallery: https://appgallery.huawei.com/#/app/C111062405 3. RuStore: https://www.rustore.ru/catalog/app/ru.rutube.studio",
+    "row": 980,
+    "question": "как скачать студию на андроид",
+    "answer": "Скачать приложение Студия RUTUBE можно в: 1. Google Play: https://play.google.com/store/apps/details?id=ru.rutube.studio 2. AppGallery: https://appgallery.huawei.com/#/app/C111062405 3. RuStore: https://www.rustore.ru/catalog/app/ru.rutube.studio",
+    "classifier_1": "ДОСТУП К RUTUBE",
+    "classifier_2": "Приложение",
+    "questions": {
+        "user_queries": [
+            {
+                "query": "Привет, подскажите, где скачать приложение студии на андроид?"
+            },
+            {
+                "query": "Как установить приложение Студия RUTUBE на телефон с андроидом?"
+            },
+            {
+                "query": "Где скачать программу студия на андроид?"
+            },
+            {
+                "query": "Можете подсказать, откуда скачать приложение Студия RUTUBE для андроид?"
+            },
+            {
+                "query": "Помогите найти, где можно скачать приложение студии для андроида!"
+            },
+            {
+                "query": "Привет, как мне загрузить приложение RUTUBE Studio на мой андроид?"
+            },
+            {
+                "query": "Где можно найти ссылку на скачивание программы студия для андроид?"
+            },
+            {
+                "query": "Как скачать приложение Студия RUTUBE на андроид?"
+            },
+            {
+                "query": "Кто знает, где можно скачать приложение студии для телефона с андроидом?"
+            },
+            {
+                "query": "Подскажите пожалуйста, как загрузить студия рутуб на андроид?"
+            }
+        ]
+    },
+    "split_answer": "Скачать приложение Студия RUTUBE можно в: 1. Google Play: https://play.google.com/store/apps/details?id=ru.rutube.studio 2. AppGallery: https://appgallery.huawei.com/#/app/C111062405 3. RuStore: https://www.rustore.ru/catalog/app/ru.rutube.studio"
+}

@@ -1,0 +1,43 @@
+{
+    "source": "Перенести видео c Youtube на RUTUBE можно только в веб-версии Студии RUTUBE: https://studio.rutube.ru/.",
+    "row": 291,
+    "question": "Как перенести видео c YouTube на RUTUBE?",
+    "answer": "Перенести видео c Youtube на RUTUBE можно только в веб-версии Студии RUTUBE: https://studio.rutube.ru/.",
+    "classifier_1": "ПРЕДЛОЖЕНИЯ",
+    "classifier_2": "Студия RUTUBE",
+    "questions": {
+        "user_queries": [
+            {
+                "query": "Как загрузить видео с YouTube на RUTUBE?"
+            },
+            {
+                "query": "Как мне переместить видео с ютуба на рутуб?"
+            },
+            {
+                "query": "Можно ли как-то перекинуть ролик с YouTube на RUTUBE?"
+            },
+            {
+                "query": "Здраствуйте, подскажите, как перенести видео с ютуба на рутуб"
+            },
+            {
+                "query": "Какие шаги нужны чтобы переместить видео с YouTube на RUTUBE?"
+            },
+            {
+                "query": "Как можно переместить видео с YouTube в систему RUTUBE?"
+            },
+            {
+                "query": "Перекинуть видео с ютуба на рутуб можно?"
+            },
+            {
+                "query": "Как видео с YouTube на RUTUBE перенести?"
+            },
+            {
+                "query": "Хочу скачать видео с ютуба и загрузить на рутуб, как это сделать?"
+            },
+            {
+                "query": "Как видео с YouTube на RUTUBE перевести?"
+            }
+        ]
+    },
+    "split_answer": "Перенести видео c Youtube на RUTUBE можно только в веб-версии Студии RUTUBE: https://studio.rutube.ru/."
+}
