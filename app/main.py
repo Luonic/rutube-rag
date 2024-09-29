@@ -57,12 +57,12 @@ async def custom_http_exception_handler(request: Request, exc: HTTPException):
 
 
 @app.post(
-    '/get_answer',
+    '/predict',
     response_model=Response,
     responses={'422': {'model': HTTPValidationError}},
     tags=['default'],
 )
-async def get_answer(body: Request) -> Union[Response, HTTPValidationError]:
+async def predict(body: Request) -> Union[Response, HTTPValidationError]:
     """
     Assist
     """

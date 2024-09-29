@@ -5,7 +5,7 @@ import requests
 
 if __name__ == "__main__":
     token = os.environ["TG_BOT_TOKEN"]
-    url = "http://95.165.128.223:31000/get_answer"
+    url = "http://95.165.128.223:31000/predict"
 
     bot=telebot.TeleBot(token)
     
