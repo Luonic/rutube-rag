@@ -9,8 +9,8 @@ RUN pip install -r requirements.txt
 COPY app/ /app
 COPY rag/ /app/rag/
 COPY reranker/ /app/reranker/
+COPY retriever/ /app/retriever/
 
 WORKDIR /app
 
-# CMD [ "ls", "-l" ]
 CMD ["fastapi", "run", "main.py", "--port", "31000"]

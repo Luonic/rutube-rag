@@ -10,13 +10,13 @@ class Request(BaseModel):
 
 class Response(BaseModel):
     answer: str = Field(..., title='Answer')
-    classifier_1: str = Field(..., title='Classifier 1')
-    classifier_2: str = Field(..., title='Classifier 2')
+    class_1: str = Field(..., title='Classifier 1')
+    class_2: str = Field(..., title='Classifier 2')
 
 class ResponseWithContext(BaseModel):
     answer: str = Field(..., title='Answer')
-    classifier_1: str = Field(..., title='Classifier 1')
-    classifier_2: str = Field(..., title='Classifier 2')
+    class_1: str = Field(..., title='Classifier 1')
+    class_2: str = Field(..., title='Classifier 2')
     contexts: List[str] = Field(..., title='Contexts')
 
 class ValidationError(BaseModel):

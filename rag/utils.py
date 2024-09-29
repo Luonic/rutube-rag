@@ -1,5 +1,6 @@
 import os
 import string
+import json
 from pathlib import Path
 from razdel import tokenize
 from transformers import AutoTokenizer
@@ -35,11 +36,12 @@ def read_docs(path, delimiter=';'):
         )
 
     docs = loader.load()
+    new_docs = []
     for doc in docs:
         doc.page_content = doc.metadata['answer']
     return docs
 
-def split_docs(docs, count_tokens, chunk_size=256, chunk_overlap=20):
+def split_docs(docs, count_tokens, chunk_size=200, chunk_overlap=20):
 
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=chunk_size,
@@ -49,17 +51,30 @@ def split_docs(docs, count_tokens, chunk_size=256, chunk_overlap=20):
     )
 
     splits = text_splitter.split_documents(docs)
+    for split in splits:
+        split.page_content = ' '.join([split.metadata['question'], split.page_content])
     return splits
 
 def count_tokens(text):
     return len(tokenizer.tokenize(text, add_special_tokens=False))
 
+# def format_docs_with_score(docs):
+#     print(len(docs))
+#     concateneted_docs_string = "\n\n".join('\n'.join([f'Id источника: {i}', doc.metadata['question'], doc.page_content]) for i, (doc, score) in enumerate(docs))
+#     print(concateneted_docs_string)
+#     print()
+#     return concateneted_docs_string
+
 def format_docs_with_score(docs):
-    print(len(docs))
-    concateneted_docs_string = "\n\n".join('\n'.join([f'Id источника: {i}\nScore: {score:.4f}', doc.metadata['question'], doc.page_content]) for i, (doc, score) in enumerate(docs))
-    print(concateneted_docs_string)
-    print()
-    return concateneted_docs_string
+    documents = [
+        {
+            "doc_id": i,
+            "title": doc.metadata['question'],
+            "content": doc.page_content
+        }
+        for i, (doc, score) in enumerate(docs)
+    ]
+    return json.dumps(documents, ensure_ascii=False)
 
 def format_docs(docs):
     print(len(docs))

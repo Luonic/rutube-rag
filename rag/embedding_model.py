@@ -13,7 +13,7 @@ class MyEmbeddings(Embeddings):
         def __init__(self, model, tokenizer):
             self.model = model
             self.tokenizer = tokenizer
-            self.batch_size = 256
+            self.batch_size = 64
 
         def average_pool(self,
                          last_hidden_states: Tensor,
@@ -24,7 +24,7 @@ class MyEmbeddings(Embeddings):
         def embed_documents(self, texts: List[str]) -> List[List[float]]:
             embeddings = []
             for i in range(0, len(texts), self.batch_size):
-                batch_dict = self.tokenizer(texts[i: i + self.batch_size], max_length=512, padding=True, truncation=True, return_tensors='pt')
+                batch_dict = self.tokenizer(texts[i: i + self.batch_size], max_length=256, padding=True, truncation=True, return_tensors='pt')
                 batch_dict = {key: value.to(self.model.device) for key, value in batch_dict.items()}
                 with torch.inference_mode():
                     outputs = self.model(**batch_dict)
@@ -51,7 +51,7 @@ def init_embeddings(model_path, tokenizer_path, device):
             model_path,
             # config.base_model_name_or_path,
             # load_in_8bit=True,
-            torch_dtype=torch.float32,
+            torch_dtype=torch.bfloat16,
             device_map=device
         )
         

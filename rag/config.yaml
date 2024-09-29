@@ -1,22 +1,24 @@
-DATA_PATH: 'data/all_data.csv'
+DATA_PATH: 'data/all_data_with_docs.csv'
 RETRIEVER:
     RETRIEVAL_MODEL_PATHS:
-        # - 'intfloat/multilingual-e5-large-instruct'
-        - 'intfloat/multilingual-e5-base'
-        # - 'finetuned-e5-base-folds_v3/0'
-        # - 'finetuned-e5-base-folds_v2/1'
-        # - 'finetuned-e5-base-folds_v2/2'
-        # - 'finetuned-e5-base-folds_v2/3'
-        # - 'finetuned-e5-base-folds_v2/4'
-    TOKENIZER_PATH: 'intfloat/multilingual-e5-base'
+        - '/app/retriever/checkpoints/bge-m3-fold_1/'
+        - '/app/retriever/checkpoints/bge-m3-fold_2/'
+        - '/app/retriever/checkpoints/bge-m3-fold_3/'
+        - '/app/retriever/checkpoints/bge-m3-fold_4/'
+        - '/app/retriever/checkpoints/bge-m3-fold_5/'
+    TOKENIZER_PATH: '/app/retriever/checkpoints/bge-m3-fold_1/'
 RERANKER:
-    RERANKER_MODEL_NAME: 'FacebookAI/xlm-roberta-large'
     RERANKER_MODEL_PATHS:
-        - '/app/reranker/checkpoints/FacebookAI/xlm-roberta-large_fold_0/checkpoint_epoch=4-val_loss=0.55-val_f1=0.73-val_ndcg=0.97.ckpt'
-        - '/app/reranker/checkpoints/FacebookAI/xlm-roberta-large_fold_1/checkpoint_epoch=0-val_loss=0.62-val_f1=0.65-val_ndcg=0.95.ckpt'
-        - '/app/reranker/checkpoints/FacebookAI/xlm-roberta-large_fold_2/checkpoint_epoch=0-val_loss=0.62-val_f1=0.62-val_ndcg=0.95.ckpt'
+        - '/app/reranker/checkpoints/FacebookAI/xlm-roberta-large_fold_0/'
+        - '/app/reranker/checkpoints/FacebookAI/xlm-roberta-large_fold_1/'
+        - '/app/reranker/checkpoints/FacebookAI/xlm-roberta-large_fold_2/'
+    TOKENIZER_PATH: '/app/reranker/checkpoints/FacebookAI/xlm-roberta-large_fold_0/'
     NUM_CLASSES: 3
     max_len: 256
 RAG:
     bm25_retrieve_k: 2
     vectors_retrieve_k: 3
+LLM:
+    LLM_BASE_URL: 'http://localhost:8000/v1'
+    MODEL_NAME: 'Vikhrmodels/Vikhr-Nemo-12B-Instruct-R-21-09-24'
+    temperature: 0.5

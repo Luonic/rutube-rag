@@ -34,7 +34,7 @@ RETRIEVER_TOKENIZER_PATH = CONFIG['RETRIEVER']['TOKENIZER_PATH']
 # RERANKER_TOKENIZER_PATH = RERANKER_DIR / CONFIG['RERANKER']['RERANKER_TOKENIZER_PATH']
 
 # Init all
-llm = init_llm()
+llm = init_llm(CONFIG['LLM'])
 embeddings = [init_embeddings(path, RETRIEVER_TOKENIZER_PATH, device=torch.device('cuda:0')) for path in RETRIEVAL_MODEL_PATHS]
 retriever = init_retriever(DATA_PATH, embeddings, CONFIG['RAG'])
 reranker = init_reranker(CONFIG['RERANKER'])
@@ -70,13 +70,13 @@ async def get_answer(body: Request) -> Union[Response, HTTPValidationError]:
     max_retries = 2
 
     for attempt in range(max_retries + 1):
-        # try:
+        try:
             result_dict = invoke_multiquery_rag_chain(rag_chain, question, True)
             return result_dict
-        # except Exception as e:
-            # if attempt < max_retries:
-                # continue
-            # raise HTTPException(status_code=500, detail="Internal Server Error")
+        except Exception as e:
+            if attempt < max_retries:
+                continue
+            raise HTTPException(status_code=500, detail="Internal Server Error")
 
 
 @app.post(

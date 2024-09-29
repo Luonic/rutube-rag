@@ -9,13 +9,13 @@ services:
     environment:
       PROXY: ${PROXY}
       OPENAI_API_KEY: ${OPENAI_API_KEY}
-    # volumes:
-    #   - ../qa/finetuned-e5-base-folds_v3:/app/rag/finetuned-e5-base-folds_v3
-    #   - ../qa/e5-base-tokenizer:/app/rag/e5-base-tokenizer
+    volumes:
+      - ./checkpoints/retriever/:/app/retriever/checkpoints/
+      - ./checkpoints/reranker/:/app/reranker/checkpoints/
     deploy:
       resources:
         reservations:
           devices:
             - driver: nvidia
-              count: 1
+              count: 2
               capabilities: [gpu]
